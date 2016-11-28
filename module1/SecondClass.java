@@ -1,3 +1,5 @@
+package module1;
+
 /**
  * Created by pan on 27.11.16.
  */
