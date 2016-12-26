@@ -29,6 +29,16 @@ public class Solution {
         SpecialStudent Paluch = new SpecialStudent("Darek","Zubr",32);
         SpecialStudent Fiona = new SpecialStudent("Fiona","Szrek",42,"Anna",4,53);
 
+
+
+        int a = 101;
+        int b = 102;
+        int c = 103;
+        int d = 104;
+        int[] array = {a,b,c,d};
+
+        System.out.println(array[3]);
+
     }
 }
 

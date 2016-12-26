@@ -6,7 +6,6 @@ public class Task2nubmer3 {
     static String[] ownerNames = {"Jane", "Ann", "Jack", "Oww", "Lane"};
     static double[] balances = {1200, 250, 2000, 500, 3200};
 
-
     public static void main(String[] args) {
 
         String ownerName = "Ann";
