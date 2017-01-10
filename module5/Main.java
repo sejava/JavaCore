@@ -28,12 +28,10 @@ public class Main {
 
         ///module0.2
         /*
-
-         */
         System.out.println("module0.2");
         API apis[] = new API[3];
         Room[] rooms = {room1, room2, room3,room4};
-
+        */
     }
 
 }
