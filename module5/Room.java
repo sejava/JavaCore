@@ -1,5 +1,7 @@
 package module5;
 
+import practic.dbconfig.abstarcMethods.DeveloperEmployee;
+
 import java.util.Date;
 
 /**
@@ -70,5 +72,38 @@ public class Room {
         this.dateAvailableForm = dateAvailableForm;
         this.hotelName = hotelName;
         this.cityName = cityName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (getClass() != obj.getClass()) return false;
+        Room room = (Room) obj;
+        if (price != 0)
+            if (price != room.getPrice()) return false;
+        if (cityName != null)
+            if (!cityName.equals(room.getCityName())) return false;
+        if (person != 0)
+            if (person != room.getPerson()) return false;
+        return  this.getPerson() == room.getPerson();
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", price=" + price +
+                ", person=" + person +
+                ", dateAvailableForm=" + dateAvailableForm +
+                ", hotelName='" + hotelName + '\'' +
+                ", cityName='" + cityName + '\'' +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id +  (int) Math.random() + (int) Math.random());
+        return (int) Math.random();
     }
 }
