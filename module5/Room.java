@@ -103,7 +103,7 @@ public class Room {
 
     @Override
     public int hashCode() {
-        int result = (int) (id +  (int) Math.random() + (int) Math.random());
-        return (int) Math.random();
+        int result = (int) (id * Math.random());
+        return result;
     }
 }

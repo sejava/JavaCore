@@ -16,7 +16,7 @@ public class Solution {
         Course coursePHP = new Course("PHP",120,"INTERNET");
         Course courseHTML = new Course("HTML",120,"INTERNET");
         Course courseCSS = new Course("CSS",120,"INTERNET");
-        Course[] courses = {courseCSS,courseMySQL,courseHTML,courseJava,coursePHP};
+        Course[] courses = {courseCSS, courseMySQL, courseHTML, courseJava,coursePHP};
 
         Student Viacheslav = new Student("Viacheslav", courses);
         Student Hubert = new Student("Hubert", "Pieczynski",4);

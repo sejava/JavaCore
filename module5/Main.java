@@ -13,7 +13,7 @@ public class Main {
         Room room4 = new Room(4,250,1,date,"Tree","Inferno");
         Room room3 = new Room(3,500,2,date,"Tree","Inferno");
 
-        Room room1 = new Room(1,250,1,date,"Radmond","Inferno");
+        Room room1 = new Room(1,550,1,new Date(),"Radmond","Inferno");
         Room room2 = new Room(2,500,2,date,"Radmond","Inferno");
 
         ///module0.1
@@ -32,6 +32,29 @@ public class Main {
         API apis[] = new API[3];
         Room[] rooms = {room1, room2, room3,room4};
         */
+
+
+        /*
+        Room tested = new Room(1,550,1,new Date(),"Radmond","Inferno");
+        Controller controller = new Controller();
+        BookingComAPI bookingComAPI = new BookingComAPI();
+        //                controller.requstRooms(550,1,"Radmond","inferno");
+        Room room5 = new Room(5,150,5,new Date(),"Radmond","Inferno");
+
+        Room[] rq = bookingComAPI.find                                                                                                                                                                                                                                                      Rooms(150,5,"Inferno","Radmond");
+
+
+        System.out.println(room5.equals(rq[0]));
+        for (Room res: rq){
+            System.out.println(res);
+        }
+        */
+
+        Controller controller = new Controller();
+        Room[] rooms = controller.requstRooms(100,1,"test","test");
+        for (Room r : rooms) {
+            System.out.println(r);
+        }
     }
 
 }

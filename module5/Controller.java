@@ -11,7 +11,6 @@ public class Controller {
         apis[0] = bookingComAPI;
         apis[1] = googleAPI;
         apis[2] = tripAdvisorAPI;
-
     }
 
     Room[] requstRooms(int price, int persons, String city, String hotel) {
@@ -21,17 +20,33 @@ public class Controller {
         GoogleAPI googleAPI = new GoogleAPI();
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
+        int countAllRooms = bookingComAPI.findRooms(price, persons, city, hotel).length;
+        int countAllRooms2 = countAllRooms + googleAPI.findRooms(price, persons, city, hotel).length;
+        int countAllRooms3 = countAllRooms2 + tripAdvisorAPI.findRooms(price, persons, city, hotel).length;
+        int countAll = countAllRooms3 - 1;
 
-        if (bookingComAPI.findRooms(price, persons, city, hotel) != null)
-            result = bookingComAPI.findRooms(price, persons, city, hotel);
-        if (googleAPI.findRooms(price, persons, city, hotel) != null)
-            result = googleAPI.findRooms(price, persons, city, hotel);
-        if (tripAdvisorAPI.findRooms(price, persons, city, hotel) != null) {
-            result = tripAdvisorAPI.findRooms(price, persons, city, hotel);
+        Room[] getAllRooms = new Room[countAll];
+        Room[] getAllRoomsBooking = bookingComAPI.findRooms(price, persons, city, hotel);
+        Room[] getAllRoomsGoogle = googleAPI.findRooms(price, persons, city, hotel);
+        Room[] getAllRoomsTrip = tripAdvisorAPI.findRooms(price, persons, city, hotel);
+        for (int i = 0; i < countAllRooms - 1; i++) {
+            while (i < countAllRooms) {
+                getAllRooms[i] = getAllRoomsBooking[i];
+                i++;
+            }
+            while (i < countAllRooms2) {
+                getAllRooms[i] = getAllRoomsGoogle[i - countAllRooms];
+                i++;
+            }
+            while (i < countAllRooms3) {
+                int countTrip = tripAdvisorAPI.findRooms(price, persons, city, hotel).length;
+                getAllRooms[i] = getAllRoomsTrip[i];
+                i++;
+                break;
+            }
         }
-        
 
-        return result;
+        return getAllRooms;
     }
 
     Room[] check(API api1, API api2) {
@@ -39,6 +54,4 @@ public class Controller {
         Room[] res2 = api2.findRooms(0, 0, null, null);
         return res1;
     }
-
-
 }
