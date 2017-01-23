@@ -46,4 +46,9 @@ public class GoogleAPI implements API{
 
         return findRooms;
     }
+
+    @Override
+    public Room[] getAllRooms() {
+        return rooms;
+    }
 }

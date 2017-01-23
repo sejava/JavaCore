@@ -31,6 +31,11 @@ public class BookingComAPI implements API {
         return findRooms;
     }
 
+    @Override
+    public Room[] getAllRooms() {
+        return rooms;
+    }
+
     public BookingComAPI() {
         Room room1 = new Room(1, 550, 1, new Date(), "Radmond", "Inferno");
         Room room2 = new Room(2, 450, 2, new Date(), "Radmond", "Inferno");

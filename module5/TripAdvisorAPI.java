@@ -34,6 +34,11 @@ public class TripAdvisorAPI implements API {
         return findRooms;
     }
 
+    @Override
+    public Room[] getAllRooms() {
+        return rooms;
+    }
+
     public TripAdvisorAPI() {
             Room room1 = new Room(1,750,1,new Date(),"Philadelfia","Kiev");
             Room room2 = new Room(2,650,2,new Date(),"Philadelfia","Kiev");
