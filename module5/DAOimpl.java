@@ -28,7 +28,8 @@ public class DAOimpl implements DAO {
         Room room = new Room(1,100,2,new Date(),"Hotel","City");
         if (room.getId() != id)
             System.out.println("room id is not find!");
-        else System.out.println("Room find: ");
+        else
+            System.out.println("Room find: ");
         //getAll().equals(room.getId());
             return room;
     }

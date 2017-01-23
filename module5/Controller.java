@@ -1,5 +1,7 @@
 package module5;
 
+import java.util.ArrayList;
+
 public class Controller {
     private API apis[] = new API[3];
 
@@ -21,37 +23,52 @@ public class Controller {
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
         int countAllRooms = bookingComAPI.findRooms(price, persons, city, hotel).length;
-        int countAllRooms2 = countAllRooms + googleAPI.findRooms(price, persons, city, hotel).length;
-        int countAllRooms3 = countAllRooms2 + tripAdvisorAPI.findRooms(price, persons, city, hotel).length;
-        int countAll = countAllRooms3 - 1;
+        int countAllRooms2 = googleAPI.findRooms(price, persons, city, hotel).length;
+        int countAllRooms3 = tripAdvisorAPI.findRooms(price, persons, city, hotel).length;
+        int countAll = countAllRooms + countAllRooms2 + countAllRooms3;
 
         Room[] getAllRooms = new Room[countAll];
         Room[] getAllRoomsBooking = bookingComAPI.findRooms(price, persons, city, hotel);
         Room[] getAllRoomsGoogle = googleAPI.findRooms(price, persons, city, hotel);
         Room[] getAllRoomsTrip = tripAdvisorAPI.findRooms(price, persons, city, hotel);
+
+        int index = 0;
         for (int i = 0; i < countAllRooms - 1; i++) {
             while (i < countAllRooms) {
                 getAllRooms[i] = getAllRoomsBooking[i];
                 i++;
             }
-            while (i < countAllRooms2) {
+            while (i < countAllRooms + countAllRooms2) {
                 getAllRooms[i] = getAllRoomsGoogle[i - countAllRooms];
                 i++;
             }
-            while (i < countAllRooms3) {
-                int countTrip = tripAdvisorAPI.findRooms(price, persons, city, hotel).length;
-                getAllRooms[i] = getAllRoomsTrip[i];
+            while (i < countAllRooms + countAllRooms2 + countAllRooms3) {
+                if (index < countAllRooms3)
+                getAllRooms[i] = getAllRoomsTrip[index];
+                index++;
                 i++;
-                break;
             }
+            break;
         }
 
         return getAllRooms;
     }
 
     Room[] check(API api1, API api2) {
-        Room[] res1 = api1.findRooms(0, 0, null, null);
-        Room[] res2 = api2.findRooms(0, 0, null, null);
-        return res1;
+        Room[] result = new Room[100];
+        int roomCount = 0;
+
+        for (Room r1 : api1.getAllRooms()){
+            for (Room r2 : api2.getAllRooms()){
+                if(r1.equals(r2)){
+                    result[roomCount] = r1;
+                    roomCount++;
+                    result[roomCount] = r2;
+                    roomCount++;
+                }
+            }
+        }
+        return result;
     }
+
 }

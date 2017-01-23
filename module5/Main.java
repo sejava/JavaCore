@@ -1,5 +1,6 @@
 package module5;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -55,6 +56,21 @@ public class Main {
         for (Room r : rooms) {
             System.out.println(r);
         }
+        System.out.println();
+        System.out.println();
+
+        BookingComAPI bookingComAPI = new BookingComAPI();
+        GoogleAPI googleAPI = new GoogleAPI();
+        TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
+
+        Room[] res = controller.check(bookingComAPI, googleAPI);
+        for (Room r : res) {
+            System.out.println(r);
+        }
+        System.out.println();
+        DAOimpl daOimpl = new DAOimpl();
+        daOimpl.save(room1);
+
     }
 
 }
