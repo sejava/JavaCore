@@ -1,7 +1,5 @@
 package module5;
 
-import practic.dbconfig.abstarcMethods.DeveloperEmployee;
-
 import java.util.Date;
 
 /**
