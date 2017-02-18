@@ -1,41 +1,67 @@
 package module5;
 
-import java.util.Date;
-
 /**
  * Created by pan on 10.01.17.
  */
 public class DAOimpl implements DAO {
+    private Room[] rooms = new Room[10];
+    private int countRooms = 0;
+
+    public Room[] getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Room[] rooms) {
+        this.rooms = rooms;
+    }
+
     @Override
-    public Room save(Room room) {
-        System.out.println(room.toString() + "  SAVED");
-        return room;
+
+    public Room[] save(Room room) {
+        if(room != null){
+            this.rooms[countRooms]= room;
+            this.countRooms++;
+        }if (countRooms == 9) countRooms = 0;
+        return rooms;
     }
 
     @Override
     public boolean delete(Room room) {
-        return false;
+        boolean res = false;
+        int i = 0;
+        while (i < rooms.length){
+            if (rooms[i] == room){
+                rooms[i] = null;
+                res = true;
+            }
+            i++;
+        }
+        return res;
     }
 
     @Override
     public Room update(Room room) {
-        System.out.println(room.toString() + " UPDATE");
+        int i = 0;
+        while (i < rooms.length){
+            if (rooms[i] != null) break;
+            if (rooms[i].getId() == room.getId()){
+                rooms[i] = room;
+                i++;
+            }
+        }
         return room;
     }
 
     @Override
     public Room findById(long id) {
-        Room room = new Room(1,100,2,new Date(),"Hotel","City");
-        if (room.getId() != id)
-            System.out.println("room id is not find!");
-        else
-            System.out.println("Room find: ");
-        //getAll().equals(room.getId());
-            return room;
+        int i = 0;
+        while (i < rooms.length)
+            if (rooms[i].getId() == id);
+        return rooms[i];
     }
 
     @Override
     public Room[] getAll() {
-        return new Room[0];
+        return rooms;
     }
 }

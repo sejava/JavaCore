@@ -15,7 +15,7 @@ public class Main {
         Room room1 = new Room(1,550,1,new Date(),"Radmond","Inferno");
         Room room2 = new Room(2,500,2,date,"Radmond","Inferno");
 
-        Room room3 = new Room(3,500,2,date,"Tree","Inferno");
+        Room room3 = new Room(1,500,2,date,"Tree","Inferno");
         Room room4 = new Room(4,250,1,date,"Tree","Inferno");
 
         ///module0.1
@@ -85,13 +85,15 @@ public class Main {
         for (Room allRoomsTripAdvisorAPI : tripAdvisorAPI.getAllRooms()) {
             System.out.println(allRoomsTripAdvisorAPI);
         }
-
+        System.out.println("DAO");
         DAOimpl dao = new DAOimpl();
-        System.out.println(dao.update(room1));
-        System.out.println(dao.delete(room2));
         System.out.println(dao.save(room3));
+        System.out.println(dao.delete(room2));
+        System.out.println(dao.update(room1));
         System.out.println(dao.findById(1));
-        dao.getAll();
+        for (Room r : dao.getAll()) {
+            System.out.println(r);
+        }
     }
 
 }

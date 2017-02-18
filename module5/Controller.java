@@ -1,9 +1,11 @@
 package module5;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Controller {
     private API apis[] = new API[3];
+    private DAOimpl daoIMPL = new DAOimpl();
 
     public Controller() {
         BookingComAPI bookingComAPI = new BookingComAPI();
@@ -69,6 +71,20 @@ public class Controller {
             }
         }
         return result;
+    }
+
+    Room save(Room room){
+        daoIMPL.save(room);
+        return room;
+    }
+    boolean delete(Room room){
+        return daoIMPL.delete(room);
+    }
+    Room update(Room room){
+        return daoIMPL.update(room);
+    }
+    Room findById(long id){
+        return daoIMPL.findById(id);
     }
 
 }
